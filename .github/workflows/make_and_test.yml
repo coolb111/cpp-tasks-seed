@@ -1,4 +1,4 @@
-name: Make and test
+name: "Make & Test"
 
 on: [pull_request, push]
 
@@ -9,25 +9,20 @@ env:
 jobs:
   maketest:
     runs-on: ubuntu-24.04
+
+    strategy:
+      fail-fast: false
+      matrix:
+        task: [ "00.DummyMake" ]
+
     steps:
 
-    - name: Установка инструментов
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y \
-        build-essential \
-        libgtest-dev \
-        xutils-dev \
-        cmake
-
-    - name: Установка Python 3.12
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.12"
+    - name: Инсталляция инструментов
+      uses: ./.github/actions/install-prerequisites
 
     - name: Получение кода
       uses: actions/checkout@v4
 
     - uses: ./.github/actions/make-utest
       with:
-        exercise: 01.DummyMake
+        exercise: ${{ matrix.task }}

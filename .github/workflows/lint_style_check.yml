@@ -1,0 +1,46 @@
+name: "Lint & Style Check"
+
+on: [pull_request, push]
+
+jobs:
+  check-formatting:
+    runs-on: ubuntu-24.04
+
+
+    strategy:
+      fail-fast: false
+      matrix:
+        task: [ "00.DummyMake" ]
+
+    steps:
+
+    - name: Инсталляция инструментов
+      uses: ./.github/actions/install-prerequisites
+
+    - uses: actions/checkout@v4
+
+    - name: Стиль кодирования
+      uses: per1234/artistic-style-action@v1
+      with:
+          options-file-path: 'astyle.ini'
+          target-paths:
+            - "./${{ matrix.task }}/"
+          name-patterns: |
+            - '*.cpp'
+            - '*.h'
+
+    - name: Статический анализ clang-tidy
+        run: |
+          CHECKS='-*,clang-analyzer-*,modernize-*,performance-*,bugprone-*'
+          FILES=$(git ls-files '*.cpp' '*.cxx' '*.cc' | tr '\n' ' ')
+
+          if [ -z "$FILES" ]; then
+            echo "No source files to analyze."
+            exit 0
+          fi
+
+          set -o pipefail
+          for f in $FILES; do
+            echo "Running clang-tidy on $f"
+            clang-tidy -p . -checks="$CHECKS" "$f" --quiet 2>&1 | sed '/^$/d'
+          done

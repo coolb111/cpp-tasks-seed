@@ -1,7 +1,23 @@
-# cpp-tasks-seed
+# Домашние задания по дисциплине «Алгоритмы и структуры данных»
 
-[![BuildUtestItest](../../actions/workflows/make_and_test.yml/badge.svg)](../../actions/workflows/make_and_test.yml)
+## Состояние
 
-[![StyleCheck](../../actions/workflows/style_check.yml/badge.svg)](../../actions/workflows/style_check.yml)
+- ![BuildUtestItest](https://github.com/dluciv/cpp-tasks-seed/actions/workflows/make_and_test.yml/badge.svg)
+- ![StyleCheck](https://github.com/dluciv/cpp-tasks-seed/actions/workflows/lint_style_check.yml/badge.svg)
 
-Small C++ repository with templates for student tasks
+## Задания
+
+### [00.DummyMake](00.DummyMake)
+
+Шаблонное задание с Makefile, модульными и интеграционными тестами.
+
+### ... Добавляйте следующие аналогично...
+
+## Что рекомендуется установить
+
+1. Разумеется, Git.
+2. Linux. С ним легче пойдёт.
+3. То, что [в зависимостях](.github/actions/install-prerequisites/action.yml).
+4. Visual Studio Code
+   - [плагин CodeLLDB](https://open-vsx.org/extension/vadimcn/vscode-lldb)
+   - [плагин Astyle](https://open-vsx.org/extension/haloscript/astyle-lsp-vscode)
