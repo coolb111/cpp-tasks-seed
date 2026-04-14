@@ -21,6 +21,12 @@ TEST(BubbleSortSuite, BasicCase) {
     EXPECT_EQ(v, std::vector<int>({1, 2, 4, 5, 8}));
 }
 
+TEST(BubbleSortSuite, ReverseOrder) {
+    std::vector<int> v = {9, 8, 7, 6, 5, 4, 3, 2, 1};
+    bubble_sort(v.begin(), v.end());
+    EXPECT_EQ(v, std::vector<int>({1, 2, 3, 4, 5, 6, 7, 8, 9}));
+}
+
 TEST(BubbleSortSuite, EqualElements) {
     std::vector<int> v = {7, 7, 7, 7};
     bubble_sort(v.begin(), v.end());
