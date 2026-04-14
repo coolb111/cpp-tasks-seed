@@ -1,21 +1,13 @@
-include ../Makefile.inc
+CXX = g++
+CXXFLAGS = -std=c++17 -Wall -Wextra -Wpedantic
 
-release : sort_demo.r.o
-	$(LD) -o $@ $^
+all: demo
 
-debug   : sort_demo.d.o
-	$(LD) -o $@ $^
+demo: sort_demo.cpp
+	$(CXX) $(CXXFLAGS) sort_demo.cpp -o demo
 
-utest   : sort_test.d.o
-	$(LD)  -o $@ $^ $(GTEST_LIBS)
+test: sort_test.cpp
+	$(CXX) $(CXXFLAGS) sort_test.cpp -lgtest -lgtest_main -pthread -o test
 
-run_utest : utest
-	./$^
-
-run_itest : debug
-	echo "Integration tests..."
-	./$^
-
-all: depends run_utest run_itest
-
-include Makefile.hdrdep
+clean:
+	rm -f demo test
