@@ -8,7 +8,6 @@ namespace
     const char *BASE85_ALPHABET =
         "0123456789"
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
         "abcdefghijklmnopqrstuvwxyz"
         "!#$%&()*+-;<=>?@^_`{|}~";
 
