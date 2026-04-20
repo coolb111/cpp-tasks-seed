@@ -24,5 +24,8 @@ mrproper : cleanall
 astyle:
 	astyle --options=../astyle.ini *.h *.cpp
 
+tidy:
+	../tidy.sh
+
 depends :
 	makedepend -f Makefile.hdrdep *.c*

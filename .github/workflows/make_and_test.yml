@@ -16,6 +16,7 @@ jobs:
         task:
         - 00.DummyMake
         - 01.InplaceSorting
+        - 02.Base85
 
     steps:
 
