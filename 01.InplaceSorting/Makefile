@@ -11,3 +11,5 @@ test: sort_test.cpp
 
 clean:
 	rm -f demo test
+
+depends:
