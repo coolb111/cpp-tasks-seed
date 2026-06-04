@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -Wpedantic
 
-.PHONY: all release debug depends tidy astyle clean test utest
+.PHONY: all release debug depends tidy astyle clean test utest run_utest
 
 all: demo
 
@@ -13,6 +13,8 @@ test: sort_test.cpp
 	./test
 
 utest: test
+
+run_utest: utest
 
 release: demo test
 
