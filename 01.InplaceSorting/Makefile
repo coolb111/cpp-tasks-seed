@@ -11,6 +11,11 @@ test: sort_test.cpp
 
 release: demo
 
+tidy:
+
+astyle:
+	astyle --options=../astyle.ini *.h *.cpp
+
 clean:
 	rm -f demo test
 
