@@ -9,6 +9,8 @@ demo: sort_demo.cpp
 test: sort_test.cpp
 	$(CXX) $(CXXFLAGS) sort_test.cpp -lgtest -lgtest_main -pthread -o test
 
+release: demo
+
 clean:
 	rm -f demo test
 
