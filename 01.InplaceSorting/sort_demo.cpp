@@ -9,23 +9,27 @@
 
 using CollInt = CollectingValue<int>;
 
-std::vector<CollInt> generate_data(std::size_t n) {
+std::vector<CollInt> generate_data(std::size_t n)
+{
     std::vector<CollInt> data(n);
     std::iota(data.begin(), data.end(), CollInt(0));
     return data;
 }
 
-void shuffle_data(std::vector<CollInt>& data) {
+void shuffle_data(std::vector<CollInt>& data)
+{
     std::shuffle(data.begin(), data.end(), std::mt19937{std::random_device{}()});
 }
 
-int main() {
+int main()
+{
     std::vector<std::size_t> sizes = {100, 500, 1000, 2000};
 
     std::cout << "N\tAlgo\t\tComps\t\tSwaps\t\tMoves\n";
     std::cout << "----------------------------------------------------------------\n";
 
-    for (std::size_t n : sizes) {
+    for (std::size_t n : sizes)
+    {
         auto number_data = generate_data(n);
 
         shuffle_data(number_data);

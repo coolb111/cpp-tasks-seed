@@ -7,7 +7,8 @@
 #include <utility>
 
 template <typename T>
-class CollectingValue {
+class CollectingValue
+{
 public:
     static inline std::size_t comps = 0;
     static inline std::size_t swaps = 0;
@@ -17,41 +18,50 @@ public:
 
     explicit CollectingValue(T val = T()) : value(val) {}
 
-    CollectingValue(const CollectingValue& other) : value(other.value) {
+    CollectingValue(const CollectingValue& other) : value(other.value)
+    {
         moves++;
     }
 
-    CollectingValue(CollectingValue&& other) noexcept : value(std::move(other.value)) {
+    CollectingValue(CollectingValue&& other) noexcept : value(std::move(other.value))
+    {
         moves++;
     }
 
-    CollectingValue& operator=(const CollectingValue& other) {
-        if (this != &other) {
+    CollectingValue& operator=(const CollectingValue& other)
+    {
+        if (this != &other)
+        {
             value = other.value;
             moves++;
         }
         return *this;
     }
 
-    CollectingValue& operator=(CollectingValue&& other) noexcept {
-        if (this != &other) {
+    CollectingValue& operator=(CollectingValue&& other) noexcept
+    {
+        if (this != &other)
+        {
             value = std::move(other.value);
             moves++;
         }
         return *this;
     }
 
-    bool operator<(const CollectingValue& other) const {
+    bool operator<(const CollectingValue& other) const
+    {
         comps++;
         return value < other.value;
     }
 
-    CollectingValue& operator++() {
+    CollectingValue& operator++()
+    {
         ++value;
         return *this;
     }
 
-    static void reset_stats() {
+    static void reset_stats()
+    {
         comps = 0;
         swaps = 0;
         moves = 0;
@@ -59,7 +69,8 @@ public:
 };
 
 template <typename T>
-void swap(CollectingValue<T>& a, CollectingValue<T>& b) {
+void swap(CollectingValue<T>& a, CollectingValue<T>& b)
+{
     CollectingValue<T>::swaps++;
     std::swap(a.value, b.value);
 }

@@ -82,7 +82,8 @@ TEST(Base85RoundTrip, WithPunctuation)
 
 TEST(Base85RoundTrip, ZeroBytesInside)
 {
-    std::vector<uint8_t> data = {
+    std::vector<uint8_t> data =
+    {
         0, 1, 2, 3, 0, 4, 5, 0, 255
     };
     EXPECT_EQ(base85::decode(base85::encode(data)), data);
@@ -91,7 +92,8 @@ TEST(Base85RoundTrip, ZeroBytesInside)
 TEST(Base85RoundTrip, AllByteValues)
 {
     std::vector<uint8_t> data;
-    for (int i = 0; i < 256; ++i) {
+    for (int i = 0; i < 256; ++i)
+    {
         data.push_back(static_cast<uint8_t>(i));
     }
 
