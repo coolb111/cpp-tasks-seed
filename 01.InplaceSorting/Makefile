@@ -1,6 +1,8 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -Wpedantic
 
+.PHONY: all release debug depends tidy astyle clean test utest
+
 all: demo
 
 demo: sort_demo.cpp
@@ -9,6 +11,8 @@ demo: sort_demo.cpp
 test: sort_test.cpp
 	$(CXX) $(CXXFLAGS) sort_test.cpp -lgtest -lgtest_main -pthread -o test
 	./test
+
+utest: test
 
 release: demo test
 
