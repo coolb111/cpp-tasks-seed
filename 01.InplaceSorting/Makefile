@@ -8,8 +8,14 @@ demo: sort_demo.cpp
 
 test: sort_test.cpp
 	$(CXX) $(CXXFLAGS) sort_test.cpp -lgtest -lgtest_main -pthread -o test
+	./test
 
-release: demo
+release: demo test
+
+debug: CXXFLAGS += -g -O0
+debug: demo test
+
+depends:
 
 tidy:
 
@@ -18,5 +24,3 @@ astyle:
 
 clean:
 	rm -f demo test
-
-depends:
