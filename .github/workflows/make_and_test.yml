@@ -3,7 +3,6 @@ name: "Make & Test"
 on: [pull_request, push]
 
 env:
-  # На будущее, отсюда: https://github.com/vkats-spbu/HomeAssignments-spring-demo/blob/main/.github/workflows/cmake-single-platform.yml
   CMAKE_BUILD_TYPE: RelWithDebInfo
 
 jobs:
@@ -17,7 +16,7 @@ jobs:
         - 00.DummyMake
         - 01.InplaceSorting
         - 02.Base85
-	- 03.Gauss
+        - 03.Gauss
 
     steps:
 

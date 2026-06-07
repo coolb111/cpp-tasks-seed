@@ -6,7 +6,6 @@ jobs:
   check-formatting:
     runs-on: ubuntu-24.04
 
-
     strategy:
       fail-fast: false
       matrix:
@@ -14,7 +13,7 @@ jobs:
         - 00.DummyMake
         - 01.InplaceSorting
         - 02.Base85
-	- 03.Gauss
+        - 03.Gauss
 
     steps:
 
